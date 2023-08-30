@@ -11,23 +11,27 @@ import DetailsMovies from "./components/DetailsMovies";
 
 import "./App.css";
 
+
 function App() {
-  return (
-    <>
-      <BrowserRouter>
+
+  return(
+
+  
+       <BrowserRouter>
         <Header />
         <Routes>
           {/* <Route path='/' element={ <HomeMovies/> }>
 
           </Route> */}
-          <Route path="/lastMovies" element={<LastMovies />}></Route>
+           <Route path="/lastMovies" element={<LastMovies />}></Route>
           <Route path="/popularMovies" element={<PopularMovies />}></Route>
           <Route path="/detailsMovies" element={<DetailsMovies />}></Route>
+          <Route path="/*" element={<div>Error</div>}></Route>
         </Routes>
         <Footer />
-      </BrowserRouter>
-    </>
-  );
+      </BrowserRouter> 
+    
+  )
 }
 
 export default App;
