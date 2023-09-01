@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-
+// import Logo from '../assets/logo.png'
 
 
 const pages = ['Home', 'Last Movies', 'Popular Movies'];
@@ -76,7 +76,7 @@ function Header() {
     <AppBar position="static" sx={{backgroundColor:"#ab526b"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <TheaterComedyTwoToneIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <Logo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
