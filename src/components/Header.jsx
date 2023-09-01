@@ -13,7 +13,6 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-// import Logo from '../assets/logo.png'
 
 
 const pages = ['Home', 'Last Movies', 'Popular Movies'];
@@ -73,8 +72,8 @@ function Header() {
 
 
   return (
-    <AppBar position="static" sx={{backgroundColor:"#ab526b"}}>
-      <Container maxWidth="xl">
+    <AppBar position="static" sx={{backgroundColor:"#ab526b", height:"12vh", paddingTop:"12px", fontFamily:"Luckiest Guy"}}>
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           {/* <Logo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
@@ -82,11 +81,12 @@ function Header() {
             noWrap
             component="a"
             href="/"
+            // className='titlesFont'
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
+              fontFamily: 'Luckiest Guy',
+              // fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -122,6 +122,7 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                fontFamily: 'Luckiest Guy'
               }}
             >
               {pages.map((page) => (
@@ -142,8 +143,8 @@ function Header() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
+              fontFamily: 'Luckiest Guy',
+              // fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',

@@ -19,6 +19,10 @@ function App() {
   
        <BrowserRouter>
         <Header />
+        {/* <HomeMovies/> */}
+        {/* <LastMovies/>
+        <PopularMovies/>
+        <DetailsMovies/> */}
         <Routes>
           {/* <Route path='/' element={ <HomeMovies/> }>
 
