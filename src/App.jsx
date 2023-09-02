@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-// import HomeMovies from "./components/HomeMovies"
+ import HomeMovies from "./components/HomeMovies"
 import LastMovies from "./components/LastMovies";
 import PopularMovies from "./components/PopularMovies";
 // import SearchMovies from "./components/SearchMovies"
 import DetailsMovies from "./components/DetailsMovies";
+import ErrorComponent from "./components/ErrorComponent"
 
 import "./App.css";
 
@@ -24,13 +25,13 @@ function App() {
         <PopularMovies/>
         <DetailsMovies/> */}
         <Routes>
-          {/* <Route path='/' element={ <HomeMovies/> }>
+          <Route path='/' element={ <HomeMovies/> }>
 
-          </Route> */}
+          </Route>
            <Route path="/lastMovies" element={<LastMovies />}></Route>
           <Route path="/popularMovies" element={<PopularMovies />}></Route>
           <Route path="/detailsMovies" element={<DetailsMovies />}></Route>
-          <Route path="/*" element={<div>Error</div>}></Route>
+          <Route path="/*" element={<ErrorComponent />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter> 

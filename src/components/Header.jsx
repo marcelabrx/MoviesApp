@@ -72,8 +72,8 @@ function Header() {
 
 
   return (
-    <AppBar position="static" sx={{backgroundColor:"#ab526b", height:"12vh", paddingTop:"12px", fontFamily:"Luckiest Guy"}}>
-      <Container maxWidth="xl" >
+    <AppBar className='titlesFont' position="static" sx={{backgroundColor:"#ab526b", height:"12vh", paddingTop:"12px", fontFamily:"Luckiest Guy"}}>
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <Logo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
@@ -122,7 +122,7 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
-                fontFamily: 'Luckiest Guy'
+                // fontFamily: 'Luckiest Guy'
               }}
             >
               {pages.map((page) => (
