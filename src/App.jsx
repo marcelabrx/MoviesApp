@@ -14,10 +14,8 @@ import "./App.css";
 
 
 function App() {
-
-  return(
-
-  
+ 
+  return( 
        <BrowserRouter>
         <Header />
         {/* <HomeMovies/> */}
