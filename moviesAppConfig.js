@@ -1,5 +1,8 @@
 const moviesAppConfig = {
-    apiKey: import.meta.env.THE_MOVIE_DB_API_KEY,
+    apiKey: import.meta.env.VITE_API_KEY,
+    ACCESS_TOKEN: import.meta.env.VITE_ACCESS_TOKEN
 }
 
-const app = initializeApp(moviesAppConfig);
+export const apiKey = moviesAppConfig.apiKey;
+export const ACCESS_TOKEN = moviesAppConfig.ACCESS_TOKEN;
+
