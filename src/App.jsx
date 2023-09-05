@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
  import HomeMovies from "./components/HomeMovies"
@@ -12,10 +12,24 @@ import ErrorComponent from "./components/ErrorComponent"
 
 import "./App.css";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#000000', // Personaliza el color primario
+    },
+    secondary: {
+      main: '#e7cd90', // Personaliza el color secundario
+    },
+    prueba:{
+      main: "#45806e"
+    }
+  },
+});
 
 function App() {
  
   return( 
+    <ThemeProvider theme={theme}>
        <BrowserRouter>
         <Header />
         {/* <HomeMovies/> */}
@@ -33,7 +47,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter> 
-    
+      </ThemeProvider>
   )
 }
 
