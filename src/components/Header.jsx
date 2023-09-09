@@ -72,7 +72,7 @@ function Header() {
 
 
   return (
-    <AppBar className='titlesFont' position="static" sx={{backgroundColor:"#ab526b", height:"12vh", paddingTop:"12px", fontFamily:"Luckiest Guy"}}>
+    <AppBar position="static" sx={{backgroundColor:"#ab526b", height:"13vh", paddingTop:"12px", fontFamily:"Luckiest Guy"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <Logo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -81,12 +81,12 @@ function Header() {
             noWrap
             component="a"
             href="/"
-            // className='titlesFont'
+            
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Luckiest Guy',
-              fontSize: '50px',
+              fontSize: '40px',
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -132,8 +132,6 @@ function Header() {
               ))}
             </Menu>
           </Box>
-
-          <TheaterComedyTwoToneIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap

@@ -16,21 +16,22 @@ export default function DetailsMovies() {
     };
     fetch(`https://api.themoviedb.org/3/movie/635910`, options)
       .then((response) => response.json())
-      .then((data) => setDetailsMovie(data))
+      .then((data) => console.log(setDetailsMovie(data)))
       .catch((err) => console.error(err));
-  }, []);
+
+    }, []);
 
   return (
     <div>
       <img
-        src={`https://image.tmdb.org/t/p/w500${detailsMovie.poster_path}`}
+        src={`https://image.tmdb.org/t/p/original${detailsMovie.poster_path}`}
         alt=""
         className="backgroundCard"
       />
       <div className="detailsCard">
         <section style={{ marginRight: "20px" }}>
           <img
-            src={`https://image.tmdb.org/t/p/w500${detailsMovie.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original${detailsMovie.backdrop_path}`}
             alt={detailsMovie.title}
             width="100%"
             height="450px"
@@ -46,8 +47,10 @@ export default function DetailsMovies() {
             }}
           >
             <h1>
-              {detailsMovie.title}
-              <span style={{ fontSize: "14px" }}>2002</span>
+              {detailsMovie.title} -
+              <span style={{ fontSize: "20px", marginLeft: '10px'}}>
+                {new Date(detailsMovie.release_date).getFullYear()}
+              </span>
             </h1>
             <Link
               to={`https://www.youtube.com/watch?v=${detailsMovie.video}`}

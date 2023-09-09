@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import Footer from './Footer';
 
 
 
@@ -34,14 +35,14 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
 
   return (
     <>
-      <h1 style={{ textAlign: "center", color: "#bca297" }}>Popular Movies</h1>
+      <h1 style={{fontSize: '50px' , textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Popular Movies</h1>
       <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
         {popularMovies && popularMovies.map(movie => (
           <Card key={movie.id} sx={{marginX: "2px", marginBottom:"20px", }}>
             <CardActionArea sx={{width:"260px"}}>
               <CardMedia
                 component="img"
-                src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 alt={movie.title}
                 sx={{
                   
@@ -59,6 +60,7 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
           </Card>
         ))}
       </div>
+      <Footer/>
     </>
   );
 }

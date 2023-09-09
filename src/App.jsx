@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
- import HomeMovies from "./components/HomeMovies"
+import HomeMovies from "./components/HomeMovies"
 import LastMovies from "./components/LastMovies";
 import PopularMovies from "./components/PopularMovies";
 // import SearchMovies from "./components/SearchMovies"
@@ -15,14 +15,11 @@ import "./App.css";
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#000000', // Personaliza el color primario
+      main: '#000000', 
     },
     secondary: {
-      main: '#e7cd90', // Personaliza el color secundario
+      main: '#ab526b', 
     },
-    prueba:{
-      main: "#45806e"
-    }
   },
 });
 
@@ -32,20 +29,20 @@ function App() {
     <ThemeProvider theme={theme}>
        <BrowserRouter>
         <Header />
-        {/* <HomeMovies/> */}
-        {/* <LastMovies/>
+        <HomeMovies/>
+        {/* <LastMovies/> */}
         <PopularMovies/>
-        <DetailsMovies/> */}
+        {/* <DetailsMovies/> */}
         <Routes>
-          <Route path='/' element={ <HomeMovies/> }>
+          {/* <Route path='/' element={ <HomeMovies/> }>
 
-          </Route>
-           <Route path="/lastMovies" element={<LastMovies />}></Route>
+          </Route> */}
+          <Route path="/lastMovies" element={<LastMovies />}></Route>
           <Route path="/popularMovies" element={<PopularMovies />}></Route>
           <Route path="/detailsMovies" element={<DetailsMovies />}></Route>
-          <Route path="/*" element={<ErrorComponent />}></Route>
+          {/* <Route path="/*" element={<ErrorComponent />}></Route> */}
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter> 
       </ThemeProvider>
   )

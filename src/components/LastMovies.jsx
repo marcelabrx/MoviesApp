@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { ACCESS_TOKEN } from '../../moviesAppConfig';
 import { useEffect, useState } from 'react';
-
+import Footer from './Footer';
 
 export default function LastMovies() {
 
@@ -34,14 +34,14 @@ useEffect(()=>{
 
   return (
     <>
-    <h1 style={{ textAlign: "center", color: "#bca297" }}>Last Movies</h1>
+    <h1 style={{ fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Last Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {lastMovies && lastMovies.map(movie => (
         <Card key={movie.id} sx={{marginX: "2px", marginBottom:"20px", }}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
-              src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               alt={movie.title}
             />
             <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#f4ebc3", height:"100px" }}>
@@ -56,6 +56,7 @@ useEffect(()=>{
         </Card>
       ))}
     </div>
+    <Footer/>
   </>
   );
 }

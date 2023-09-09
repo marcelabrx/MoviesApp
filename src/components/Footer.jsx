@@ -2,30 +2,30 @@
 
 function Footer() {
     return (
-        <footer className="footer">
-            <div className="footer-left">
-                <p>© 2023 Movies App</p>
-                <p>All rights reserved.</p>
-            </div>
-            <div className="footer-center">
-                <ul>
-                    <li>Legal</li>
-                    <li>Privacidad</li>
-                    <li>Cookies</li>
-                    <li>Contacto</li>
-                </ul>
-            </div>
-            <div className="footer-right">
-                <ul>
-                    <li>Preguntas frecuentes</li>
-                    <li>Prensa</li>
-                    <li>Centro de ayuda</li>
-                    <li>Términos de uso</li>
-                </ul>
-            </div>
-            <p>Created By Marcela Britos & Indra Lima</p>
-        </footer>
+        <>
 
+        <div className="content-footer">
+            <footer class="footer">
+                <div class="waves">
+                <div class="wave" id="wave1"></div>
+                <div class="wave" id="wave2"></div>
+                <div class="wave" id="wave3"></div>
+                <div class="wave" id="wave4"></div>
+                </div>
+                
+                <ul class="menu">
+                <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+
+                </ul>
+                <p>&copy;2023 Created By Marcela Britos & Indra Lima | All Rights Reserved</p>
+            </footer>
+        </div>
+        </>
+        
     )
 }
 
