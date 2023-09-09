@@ -12,16 +12,37 @@ import ErrorComponent from "./components/ErrorComponent"
 
 import "./App.css";
 
-const theme = createTheme({
+const lightTheme = createTheme({
   palette: {
     primary: {
-      main: '#000000', 
+      main: '#ab526b', // Color principal
     },
     secondary: {
-      main: '#ab526b', 
+      main: '#FFC107', // Color secundario
+    },
+    background: {
+      default: '#FFFFFF', // Color de fondo predeterminado
+      paper: '#F5F5F5', // Color del papel (fondos de componentes)
     },
   },
 });
+
+const darkTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#ab526b', // Color principal
+    },
+    secondary: {
+      main: '#FFC107', // Color secundario
+    },
+    background: {
+      default: '#121212', // Color de fondo predeterminado
+      paper: '#1E1E1E', // Color del papel (fondos de componentes)
+    },
+    type: 'dark', // Indica que este es un tema oscuro
+  },
+});
+
 
 function App() {
  
