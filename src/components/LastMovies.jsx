@@ -5,6 +5,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { ACCESS_TOKEN } from '../../moviesAppConfig';
 import { useEffect, useState } from 'react';
@@ -39,6 +41,8 @@ useEffect(()=>{
       {lastMovies && lastMovies.map(movie => (
         <Card key={movie.id} sx={{marginX: "2px", marginBottom:"20px", }}>
           <CardActionArea sx={{width:"260px"}}>
+          <StarIcon sx={{position:"absolute", left:"220px", top:"5px", fontSize:"2.5em", color:"yellow" }}/>
+            <StarBorderIcon sx={{position:"absolute", left:"220px", top:"5px", fontSize:"2.5em", color:"yellow" }}/>
             <CardMedia
               component="img"
               src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}

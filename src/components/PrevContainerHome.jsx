@@ -104,7 +104,7 @@ export default function PrevContainerHome() {
             >
               {popularMovies &&
                 popularMovies.map((movie) => (
-                  <TableRow sx={{overflowY: 'scroll' }}>
+                  <TableRow sx={{overflowY: 'scroll' }} key={movie.id}>
                     <TableCell>
                       <ListItem sx={{ justifyContent: "space-between", height: '25px' }}>
                         <ListItemAvatar>
@@ -175,7 +175,7 @@ export default function PrevContainerHome() {
             >
               {topRated &&
                 topRated.map((movie) => (
-                  <TableRow>
+                  <TableRow key={movie.id}>
                     <TableCell>
                       <ListItem sx={{ justifyContent: "space-between", height: '25px' }}>
                         <ListItemAvatar>

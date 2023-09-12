@@ -13,9 +13,10 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
+import { Link } from 'react-router-dom';
 
 
-const pages = ['Home', 'Last Movies', 'Popular Movies'];
+const pages = ['Home', 'Last Movies', 'Popular Movies','Favorites'];
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -127,7 +128,9 @@ function Header() {
             >
               {pages.map((page) => (
                 <MenuItem className='bg-menu' key={page} onClick={handleCloseNavMenu} sx={{backgroundColor: "#bca297", color:"white"}}>
+                   <Link to={`/${page}`}>
                   <Typography textAlign="center">{page}</Typography>
+                   </Link> 
                 </MenuItem>
               ))}
             </Menu>
