@@ -1,0 +1,28 @@
+/* Error animation */
+.errorContainer{
+    width: 100vw;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.errorTitle {
+    font-family: 'Luckiest Guy';
+    font-weight: 200;
+}
+
+.heartbeat {
+    animation-name: heartbeat;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+@keyframes heartbeat {
+    0% {transform: scale(1);}
+    25% {transform: scale(1.3);}
+    50% {transform: scale(1);}
+    75% {transform: scale(0.7);}
+    100% {transform: scale(1);}
+  }
+  

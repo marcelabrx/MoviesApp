@@ -57,7 +57,7 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
                 <Link component="div">
                   <RemoveRedEyeOutlinedIcon className='bg-menu' sx={{ color: "#5391f5", position:"absolute", bottom:"20px"}} />
                 </Link>
-                <StarIcon sx={{position:"absolute", left:"220px", bottom:"5px", fontSize:"2.5em", color:"yellow" }}/>
+                {/* <StarIcon sx={{position:"absolute", left:"220px", bottom:"5px", fontSize:"2.5em", color:"yellow" }}/> */}
             <StarBorderIcon sx={{position:"absolute", left:"220px", top:"5px", fontSize:"2.5em", color:"yellow" }}/>
               </CardContent>
             </CardActionArea>

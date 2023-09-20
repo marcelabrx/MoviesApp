@@ -6,23 +6,27 @@ import {
   Typography,
 } from "@mui/material";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import SearchIcon from '@mui/icons-material/Search';
 import { Link } from "react-router-dom";
 
 export default function searchMovies() {
   return (
     <>
+    <div>
       <h1
         style={{
-          fontSize: "50px",
+          fontSize: "45px",
           textAlign: "center",
-          color: "#bca297",
+          color: '#bca297',
           fontFamily: "Luckiest Guy",
           borderBottom: "solid",
           borderTop: "solid",
         }}
       >
-        Letras que se escriben en el search
+        <SearchIcon sx={{xs: {fontSize: '20px', marginLeft: '10px', paddingTop: '5px', fontWeight: 'bold'}, md: {fontSize: '70px', marginLeft: '10px', paddingTop: '5px'}}}/>
+        What are you looking for?
       </h1>
+    </div>
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
@@ -31,7 +35,7 @@ export default function searchMovies() {
           <CardActionArea sx={{ width: "260px" }}>
             <CardMedia
               component="img"
-              //   src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                src="https://picsum.photos/id/1018/1000/600/"
               //   alt={movie.title}
             />
             <CardContent

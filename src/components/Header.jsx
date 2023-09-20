@@ -89,7 +89,7 @@ function Header() {
               fontFamily: 'Luckiest Guy',
               fontSize: '40px',
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#fff',
               textDecoration: 'none',
             }}
           >

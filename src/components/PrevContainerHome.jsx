@@ -67,7 +67,6 @@ export default function PrevContainerHome() {
     <Container
         sx={{
           marginTop: "10%",
-          display: "flex",
           justifyContent: "space-between",
           display: { xs: 'flex', md: 'flex' },
           flexDirection: { xs: 'column', md: 'row' }
@@ -79,9 +78,9 @@ export default function PrevContainerHome() {
           sx={{ border: "solid", borderColor: "#ab526b", marginRight: { md: "30px" }, maxHeight: { xs: '300px', md: '500px' }, marginBottom: '10px' }}
         >
           <Table sx={{}}>
-            <TableHead sx={{bgcolor: "#ab526b", fontFamily: "Luckiest Guy" }}>
-              <TableRow>
-                <TableCell>
+            <TableHead sx={{bgcolor: "#ab526b", fontFamily: "Luckiest Guy"}}>
+              <TableRow >
+                <TableCell >
                   <Typography
                     sx={{
                       color: "#fff",
@@ -104,7 +103,7 @@ export default function PrevContainerHome() {
             >
               {popularMovies &&
                 popularMovies.map((movie) => (
-                  <TableRow sx={{overflowY: 'scroll' }} key={movie.id}>
+                  <TableRow sx={{overflowY: 'scroll'}} key={movie.id}>
                     <TableCell>
                       <ListItem sx={{ justifyContent: "space-between", height: '25px' }}>
                         <ListItemAvatar>

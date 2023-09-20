@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../../moviesAppConfig";
 
+
 function HomeMovies() {
   const [newMovies, setNewMovies] = useState([]);
 
@@ -42,7 +43,6 @@ function HomeMovies() {
         autoPlay={true}
         dynamicHeight={false}
         centerMode={true}
-        className="carrousel-container"
       >
         {newMovies &&
           newMovies.map((movie) => (
