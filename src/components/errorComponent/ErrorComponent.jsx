@@ -1,6 +1,6 @@
-import Footer from "./Footer"
- import PopCornColor from "../assets/PopCornColor.png"
- import styles from "./ErrorComponent.module.css"
+import Footer from "../footer/Footer"
+import PopCornColor from "../../assets/PopCornColor.png"
+import styles from "./ErrorComponent.module.css"
 
 export default function ErrorComponent (){
  return(

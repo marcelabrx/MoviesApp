@@ -1,7 +1,7 @@
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ACCESS_TOKEN } from "../../moviesAppConfig";
+import { ACCESS_TOKEN } from "../../../moviesAppConfig";
 import styles from './DetailsMovies.module.css'
 
 export default function DetailsMovies() {

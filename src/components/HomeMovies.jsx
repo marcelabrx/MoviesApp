@@ -4,8 +4,8 @@ import { Carousel } from "react-responsive-carousel";
 import * as React from "react";
 
 import PrevContainerHome from "./PrevContainerHome";
-import LoaderMovies from "./LoaderMovies";
-import Footer from "./Footer";
+import LoaderMovies from "./loader/LoaderMovies";
+import Footer from './footer/Footer';
 
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../../moviesAppConfig";
@@ -33,7 +33,7 @@ function HomeMovies() {
   }, []);
 
   return (
-    <>
+    <div style={{width:"100%", height:"100%", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
       {/* <LoaderMovies/> */}
       
       <Carousel
@@ -69,7 +69,7 @@ function HomeMovies() {
       </Carousel>
       <PrevContainerHome/>
       <Footer/>
-    </>
+      </div>
   );
 }
 

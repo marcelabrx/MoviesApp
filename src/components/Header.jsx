@@ -128,7 +128,7 @@ function Header() {
             >
               {pages.map((page) => (
                 <MenuItem className='bg-menu' key={page} onClick={handleCloseNavMenu} sx={{backgroundColor: "#bca297", color:"white"}}>
-                   <Link to={`/${page}`}>
+                   <Link to={`${page}`}  style={{textDecoration:"none"}}>
                   <Typography textAlign="center">{page}</Typography>
                    </Link> 
                 </MenuItem>
@@ -145,7 +145,6 @@ function Header() {
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'Luckiest Guy',
-              // fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -155,13 +154,14 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              <Link to={`${page}`} key={page} style={{textDecoration:"none"}}>
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ mx: 3, my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
         <Search>
