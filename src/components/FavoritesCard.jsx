@@ -1,48 +1,21 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { ACCESS_TOKEN } from '../../moviesAppConfig';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Stack, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { CardActionArea, Button, Stack } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/Star';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import Footer from './footer/Footer';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { FavoriteContext } from '../context/FavoriteContext';
 
-
-export default function PopularMovies() {
-
- const [popularMovies, setPopularMovies] = useState([]);
- const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
-
-const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
-  useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      }
-    };
-  
-    fetch(`${apiUrl}?language=es-Arg-US&page=1`, options)
-
-      .then(response => response.json())
-      .then(data => setPopularMovies(data.results))
-      .catch(err => console.error(err));
-  }, []);
-
-  return (
-    <div style={{width:"100%", height:"100%", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
-    <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Popular Movies</h1>
-    <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
-      {popularMovies && popularMovies.map(movie => (
-        <Card key={movie.id} sx={{marginX: "2px", marginBottom:"1em", }}>
+export default function FavoritesCard ({movie}){
+  const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
+    return (
+        <Card 
+        // key={movie.id} 
+        sx={{marginX: "2px", marginBottom:"1em"}}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
@@ -68,9 +41,5 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
             </CardContent>
           </CardActionArea>
         </Card>
-      ))}
-    </div>
-    <Footer/>
-  </div>
-  );
+    )
 }

@@ -10,12 +10,14 @@ import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { ACCESS_TOKEN } from '../../moviesAppConfig';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Footer from './footer/Footer';
+import { FavoriteContext } from '../context/FavoriteContext';
 
 export default function LastMovies() {
-
   const [lastMovies, setLastMovies] = useState([]);
+
+  const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
 
   const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing'
 useEffect(()=>{
@@ -40,7 +42,9 @@ useEffect(()=>{
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Last Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {lastMovies && lastMovies.map(movie => (
-        <Card key={movie.id} sx={{marginX: "2px", marginBottom:"1em", }}>
+        <Card key={movie.id} 
+              id={movie.id}
+        sx={{marginX: "2px", marginBottom:"1em", }}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
@@ -59,7 +63,8 @@ useEffect(()=>{
                 </Button>
                 </Link>
                 <Button variant="contained" size="small" sx={{backgroundColor:"#ab526b"}}>
-                <StarBorderIcon className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} />
+                  {getFavoriteMovie(movie.id)? <StarIcon  className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> removeFavoritesMovies(movie)}/> : <StarBorderIcon className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movie)} />}
+                  
                 </Button>
                 
                 </Stack>
@@ -67,7 +72,7 @@ useEffect(()=>{
             </CardContent>
           </CardActionArea>
         </Card>
-      ))}
+       ))}
     </div>
     <Footer/>
   </div>
