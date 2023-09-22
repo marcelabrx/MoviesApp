@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import HomeMovies from "./components/HomeMovies"
 import LastMovies from "./components/LastMovies";
 import PopularMovies from "./components/PopularMovies";
-import SearchMovies from "./components/SearchMovies"
+import SearchMoviesContainer from "./components/SearchMoviesContainer"
 import ErrorComponent from "./components/errorComponent/ErrorComponent"
 import FavoritesContainer from "./components/FavoritesContainer"
 import DetailsMovies from "./components/detailsMovies/DetailsMovies"
@@ -25,7 +25,7 @@ function App() {
           <Route path="/lastMovies" element={<LastMovies />}></Route>
           <Route path="/popularMovies" element={<PopularMovies />}></Route>
           <Route path="/detailsMovies" element={<DetailsMovies />}></Route>
-          <Route path="/searchMovies" element={<SearchMovies />}></Route> 
+          <Route path="/searchMovies" element={<SearchMoviesContainer />}></Route> 
           <Route path="/favoritesMovies" element={<FavoritesContainer />}></Route> 
           <Route path="/*" element={<ErrorComponent />}></Route>
         </Routes>

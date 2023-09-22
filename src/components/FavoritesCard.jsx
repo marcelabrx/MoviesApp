@@ -14,7 +14,6 @@ export default function FavoritesCard ({movie}){
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
     return (
         <Card 
-        // key={movie.id} 
         sx={{marginX: "2px", marginBottom:"1em"}}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
