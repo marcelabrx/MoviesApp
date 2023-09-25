@@ -6,12 +6,14 @@ import * as React from "react";
 import PrevContainerHome from "./PrevContainerHome";
 import LoaderMovies from "./loader/LoaderMovies";
 import Footer from './footer/Footer';
+import { Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../../moviesAppConfig";
-
+import useMovieDetails from "./useMoviesDetails"
 
 function HomeMovies() {
+
   const [newMovies, setNewMovies] = useState([]);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ function HomeMovies() {
   }, []);
 
   return (
-    <div style={{width:"100%", height:"100%", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
+    <div>
       {/* <LoaderMovies/> */}
       
       <Carousel
@@ -62,7 +64,9 @@ function HomeMovies() {
               >
                 <h1>{movie.title}</h1>
                 <p>{movie.overview}</p>
+                <Link to={`/detailsMovies/${movie.id}`}>
                 <button className="see-more">See more...</button>
+                </Link>
               </div>
             </div>
           ))}
