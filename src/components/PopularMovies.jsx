@@ -13,6 +13,7 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import Footer from './footer/Footer';
 import { useContext } from 'react';
 import { FavoriteContext } from '../context/FavoriteContext';
+import PaginationMovies from './PaginationMovies';
 
 
 export default function PopularMovies() {
@@ -70,6 +71,7 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
         </Card>
       ))}
     </div>
+    <PaginationMovies/>
     <Footer/>
   </div>
   );
