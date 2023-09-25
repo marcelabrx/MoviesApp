@@ -14,30 +14,6 @@ export default function DetailsMovies() {
   useEffect(() => {
     fetchMovieDetails(movieId);
   }, [movieId]);
-
-  // const [detailsMovie, setDetailsMovie] = useState({});
-  // useEffect(() => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       accept: "application/json",
-  //       Authorization: `Bearer ${ACCESS_TOKEN}`,
-  //     },
-  //   };
-  //   fetch(`https://api.themoviedb.org/3/movie/551`, options)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.overview) {
-  //         const overviewWords = data.overview.split(" ");
-  //         data.overview = overviewWords.slice(0, 50).join(" ");
-  //         if (overviewWords.length > 50) {
-  //           data.overview += " ...";
-  //         }
-  //       }
-  //       setDetailsMovie(data);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
   
   return (
     <div 
@@ -89,3 +65,28 @@ export default function DetailsMovies() {
     </div>
   );
 }
+
+
+  // const [detailsMovie, setDetailsMovie] = useState({});
+  // useEffect(() => {
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       accept: "application/json",
+  //       Authorization: `Bearer ${ACCESS_TOKEN}`,
+  //     },
+  //   };
+  //   fetch(`https://api.themoviedb.org/3/movie/551`, options)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.overview) {
+  //         const overviewWords = data.overview.split(" ");
+  //         data.overview = overviewWords.slice(0, 50).join(" ");
+  //         if (overviewWords.length > 50) {
+  //           data.overview += " ...";
+  //         }
+  //       }
+  //       setDetailsMovie(data);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
