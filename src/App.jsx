@@ -24,7 +24,7 @@ function App() {
           <Route path='/' element={ <HomeMovies/> }></Route> 
           <Route path="/lastMovies" element={<LastMovies />}></Route>
           <Route path="/popularMovies" element={<PopularMovies />}></Route>
-          <Route path="/detailsMovies" element={<DetailsMovies />}></Route>
+          <Route path="/detailsMovies/:movieId" element={<DetailsMovies />}></Route>
           <Route path="/searchMovies" element={<SearchMovies />}></Route> 
           <Route path="/favoritesMovies" element={<FavoritesContainer />}></Route> 
           <Route path="/*" element={<ErrorComponent />}></Route>

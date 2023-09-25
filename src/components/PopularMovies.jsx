@@ -38,11 +38,11 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
   }, []);
 
   return (
-    <div style={{width:"100%", height:"100%", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
+    <div style={{width:"100%", height:"100%", paddingTop:"2em"}}>
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Popular Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {popularMovies && popularMovies.map(movie => (
-        <Card key={movie.id} sx={{marginX: "2px", marginBottom:"1em", }}>
+        <Card key={movie.id} sx={{marginX: "4px", marginBottom:"1em", backgroundColor:"#f4ebc3" }}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
