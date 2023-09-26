@@ -15,23 +15,25 @@ import useMovieDetails from "./useMoviesDetails"
 function HomeMovies() {
 
   const [newMovies, setNewMovies] = useState([]);
+  const { detailsMovie, fetchMovieDetails } = useMovieDetails();
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      },
-    };
+    fetchMovieDetails("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
+    // const options = {
+    //   method: "GET",
+    //   headers: {
+    //     accept: "application/json",
+    //     Authorization: `Bearer ${ACCESS_TOKEN}`,
+    //   },
+    // };
 
-    fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
-      options
-    )
-      .then((response) => response.json())
-      .then((data) => setNewMovies(data.results))
-      .catch((err) => console.error(err));
+    // fetch(
+    //   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+    //   options
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => setNewMovies(data.results))
+    //   .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -46,8 +48,8 @@ function HomeMovies() {
         dynamicHeight={false}
         centerMode={true}
       >
-        {newMovies &&
-          newMovies.map((movie) => (
+        {detailsMovie.results &&
+          detailsMovie.results.map((movie) => (
             <div key={movie.id}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}

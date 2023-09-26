@@ -12,7 +12,7 @@ export default function DetailsMovies() {
   const { detailsMovie, fetchMovieDetails } = useMovieDetails();
 
   useEffect(() => {
-    fetchMovieDetails(movieId);
+    fetchMovieDetails(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);
   }, [movieId]);
   
   return (
