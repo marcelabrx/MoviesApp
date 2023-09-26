@@ -3,41 +3,17 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../../../moviesAppConfig";
 import styles from './DetailsMovies.module.css'
-import useMovieDetails from "../useMoviesDetails";
+import useMovies from "../useMovies";
 import { useParams } from "react-router-dom";
 
 export default function DetailsMovies() {
 
   const { movieId } = useParams(); 
-  const { detailsMovie, fetchMovieDetails } = useMovieDetails();
+  const { detailsMovie, fetchMovieDetails } = useMovies();
 
   useEffect(() => {
-    fetchMovieDetails(movieId);
+    fetchMovieDetails(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);
   }, [movieId]);
-
-  // const [detailsMovie, setDetailsMovie] = useState({});
-  // useEffect(() => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       accept: "application/json",
-  //       Authorization: `Bearer ${ACCESS_TOKEN}`,
-  //     },
-  //   };
-  //   fetch(`https://api.themoviedb.org/3/movie/551`, options)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.overview) {
-  //         const overviewWords = data.overview.split(" ");
-  //         data.overview = overviewWords.slice(0, 50).join(" ");
-  //         if (overviewWords.length > 50) {
-  //           data.overview += " ...";
-  //         }
-  //       }
-  //       setDetailsMovie(data);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
   
   return (
     <div 
@@ -89,3 +65,28 @@ export default function DetailsMovies() {
     </div>
   );
 }
+
+
+  // const [detailsMovie, setDetailsMovie] = useState({});
+  // useEffect(() => {
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       accept: "application/json",
+  //       Authorization: `Bearer ${ACCESS_TOKEN}`,
+  //     },
+  //   };
+  //   fetch(`https://api.themoviedb.org/3/movie/551`, options)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.overview) {
+  //         const overviewWords = data.overview.split(" ");
+  //         data.overview = overviewWords.slice(0, 50).join(" ");
+  //         if (overviewWords.length > 50) {
+  //           data.overview += " ...";
+  //         }
+  //       }
+  //       setDetailsMovie(data);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
