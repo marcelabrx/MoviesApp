@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../../../moviesAppConfig";
 import styles from './DetailsMovies.module.css'
-import useMovieDetails from "../useMoviesDetails";
+import useMovies from "../useMovies";
 import { useParams } from "react-router-dom";
 
 export default function DetailsMovies() {
 
   const { movieId } = useParams(); 
-  const { detailsMovie, fetchMovieDetails } = useMovieDetails();
+  const { detailsMovie, fetchMovieDetails } = useMovies();
 
   useEffect(() => {
     fetchMovieDetails(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);

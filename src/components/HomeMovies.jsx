@@ -10,12 +10,12 @@ import { Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../../moviesAppConfig";
-import useMovieDetails from "./useMoviesDetails"
+import useMovies from "./useMovies"
 
 function HomeMovies() {
 
   const [newMovies, setNewMovies] = useState([]);
-  const { detailsMovie, fetchMovieDetails } = useMovieDetails();
+  const { detailsMovie, fetchMovieDetails } = useMovies();
 
   useEffect(() => {
     fetchMovieDetails("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
