@@ -13,11 +13,17 @@ import { ACCESS_TOKEN } from '../../moviesAppConfig';
 import { useEffect, useState, useContext } from 'react';
 import Footer from './footer/Footer';
 import { FavoriteContext } from '../context/FavoriteContext';
+import PaginationMovies from './PaginationMovies';
 
 export default function LastMovies() {
   const [lastMovies, setLastMovies] = useState([]);
 
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
+
+  const [ page, setPage ]  = useState(1)
+  const [ totalPages, setTotalPages] = useState()
+
+  // const handleChangePage = page => setPage(page)
 
   const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing'
 useEffect(()=>{
@@ -29,13 +35,21 @@ useEffect(()=>{
     }
   };
   
-  fetch(`${apiUrl}?language=en-US&page=`, options)
+  fetch(`${apiUrl}?language=en-US&page=${page}`, options)
 
     .then(response => response.json())
-    .then(data => setLastMovies(data.results))
+    .then(data => {
+
+      const results = data.results;
+      const totalPages = data.total_pages;
+
+      setTotalPages(totalPages);
+      setLastMovies(results);
+    })
+
     .catch(err => console.error(err));
 
-}, [])
+}, [page])
 
   return (
     <div style={{width:"100%", height:"100%", paddingTop:"2em"}}>
@@ -74,6 +88,8 @@ useEffect(()=>{
         </Card>
        ))}
     </div>
+    
+    <PaginationMovies page={page} setPage={setPage} totalPages={totalPages}/>
     <Footer/>
   </div>
   );
