@@ -20,7 +20,8 @@ export default function LastMovies() {
 
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
 
-  const { page, setPage } = useState(1)
+  const [ page, setPage ]  = useState(1)
+  const [ totalPages, setTotalPages] = useState()
 
   // const handleChangePage = page => setPage(page)
 
@@ -34,10 +35,18 @@ useEffect(()=>{
     }
   };
   
-  fetch(`${apiUrl}?language=en-US?page=${page}`, options)
+  fetch(`${apiUrl}?language=en-US&page=${page}`, options)
 
     .then(response => response.json())
-    .then(data => setLastMovies((data.results)))
+    .then(data => {
+
+      const results = data.results;
+      const totalPages = data.total_pages;
+
+      setTotalPages(totalPages);
+      setLastMovies(results);
+    })
+
     .catch(err => console.error(err));
 
 }, [page])
@@ -80,7 +89,7 @@ useEffect(()=>{
        ))}
     </div>
     
-    <PaginationMovies/>
+    <PaginationMovies page={page} setPage={setPage} totalPages={totalPages}/>
     <Footer/>
   </div>
   );

@@ -3,10 +3,10 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 
-export default function PaginationMovies({ page, setPage }) {
+export default function PaginationMovies({ page, setPage, totalPages}) {
 
   const handleChangePage = (e, page) => {
-    setPage(page);
+    setPage(page)
   };
 
   return (
@@ -14,7 +14,7 @@ export default function PaginationMovies({ page, setPage }) {
       <Pagination
         size='large'
         variant='outlined'
-        count={10}
+        count={totalPages}
         color="secondary"
         page={page}
         onChange={handleChangePage}
