@@ -7,16 +7,17 @@ import { ACCESS_TOKEN } from "../../moviesAppConfig";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
+  left: "35%",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  width: "100%",
+  width: "30%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
-    width: "auto",
+    width: "30%",
   },
 }));
 
@@ -31,12 +32,13 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: "#bca297",
+  fontWeight: "bold",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "100%",
+    width: "30%",
     [theme.breakpoints.up("sm")]: {
       width: "12ch",
       "&:focus": {
@@ -72,10 +74,10 @@ export default function SearchMoviesContainer() {
   }, [searchMovie]);
 
   return (
-    <>
-      <Search>
+    <div style={{ paddingTop: "2em" }}>
+      <Search sx={{ border: "2px #bca297 solid" }}>
         <SearchIconWrapper>
-          <SearchIcon />
+          <SearchIcon sx={{ color: "#bca297" }} />
         </SearchIconWrapper>
         <StyledInputBase
           placeholder="Search…"
@@ -84,14 +86,10 @@ export default function SearchMoviesContainer() {
           onChange={(e) => setSearchMovie(e.target.value)}
         />
       </Search>
-      <div style={{position:"fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: "5" }}>
-      {searchMovie.length > 0 ? (
-    <SearchMoviesCard
-      searchMovie={searchMovie}
-      searchResults ={searchResults}
-    />
-    ) : null}
-      </div>
-    </>
+      <SearchMoviesCard
+        searchMovie={searchMovie}
+        searchResults={searchResults}
+      />
+    </div>
   );
 }

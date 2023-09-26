@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,9 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-
 import { Link } from "react-router-dom";
-import SearchMoviesContainer from "./SearchMoviesContainer";
 
 const pages = [
   {
@@ -30,6 +27,10 @@ const pages = [
   {
     name: "Favorites",
     path: "/favoritesMovies",
+  },
+  {
+    name: "Search Movies",
+    path: "/searchMovies",
   },
 ];
 
@@ -127,7 +128,6 @@ function Header() {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "Luckiest Guy",
-              // fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -151,7 +151,6 @@ function Header() {
               </Link>
             ))}
           </Box>
-          <SearchMoviesContainer />
         </Toolbar>
       </Container>
     </AppBar>
