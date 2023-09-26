@@ -7,7 +7,7 @@ export default function ErrorComponent (){
   <>
    <div className={ styles.errorContainer }>
     <h1 className={ styles.errorTitle }>Error: Page not found! </h1>
-    <img className={ styles.heartbeat } src={PopCornColor} alt="" width="200px" height="200px" />
+    <img className={ styles.heartbeat } src={PopCornColor} alt="pop corn image" width="200px" height="200px" />
    </div>
  <Footer/>
  </> 

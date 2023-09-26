@@ -35,7 +35,7 @@ function HomeMovies() {
   }, []);
 
   return (
-    <div>
+    <div style={{width:"100%", height:"100%", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
       {/* <LoaderMovies/> */}
       
       <Carousel
