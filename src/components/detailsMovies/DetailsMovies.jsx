@@ -5,32 +5,33 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { useEffect, useContext } from "react";
 import styles from './DetailsMovies.module.css'
-import useMovieDetails from "../useMoviesDetails";
+import useMovies from "../../customHooks/useMovies";
 import { useParams } from "react-router-dom";
 import { FavoriteContext } from '../../context/FavoriteContext';
 
 export default function DetailsMovies() {
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
   const { movieId } = useParams(); 
-  const { detailsMovie, fetchMovieDetails } = useMovieDetails();
+  const { movies, fetchMovies } = useMovies();
 
   useEffect(() => {
-    fetchMovieDetails(movieId);
+    fetchMovies(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);
   }, [movieId]);
+  
   
   return (
     <div className={styles.detailsBody}
-    style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500${detailsMovie.poster_path})`}}>
+    style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500${movies.poster_path})`}}>
     <section className={styles.card}>
     <Button size="small" sx={{backgroundColor:"transparent"}}>
-                  {getFavoriteMovie(detailsMovie.id)? <StarIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> removeFavoritesMovies(detailsMovie)}/> : <StarBorderIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(detailsMovie)} />}
+                  {getFavoriteMovie(movies.id)? <StarIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> removeFavoritesMovies(movies)}/> : <StarBorderIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movies)} />}
                 </Button>   
     <div className={styles.imgCard}
     style={{
-      backgroundImage:`url(https://image.tmdb.org/t/p/w500${detailsMovie.poster_path})`}}>
+      backgroundImage:`url(https://image.tmdb.org/t/p/w500${movies.poster_path})`}}>
       </div>
       <Link className={styles.trailerView}
-              to={`https://www.youtube.com/watch?v=${detailsMovie.video}`}
+              to={`https://www.youtube.com/watch?v=${movies.video}`}
             >
               <PlayCircleIcon sx={{fontSize:"3em", backgroundColor:"#f4ebc3", 
               borderRadius:"50%"
@@ -39,18 +40,18 @@ export default function DetailsMovies() {
       <section className={styles.informationDetails}>
           <div className={styles.detailsTitle}>
             <h1>
-              {detailsMovie.title} -
-              <span>{new Date(detailsMovie.release_date).getFullYear()}
+              {movies.title} -
+              <span>{new Date(movies.release_date).getFullYear()}
               </span>
             </h1>
           </div>
           <section>
             <h3 className={styles.detailsSubTitle}>General information</h3>
-            <p>{detailsMovie.overview}</p>
+            <p>{movies.overview}</p>
             <h3 className={styles.detailsSubTitle}>Genres</h3>
             <ul style={{display:"flex", justifyContent:"space-evenly"}}>
-              {detailsMovie.genres &&
-                detailsMovie.genres.map((genre) => (
+              {movies.genres &&
+                movies.genres.map((genre) => (
                   <li key={genre.id}>* {genre.name}</li>
                 ))}
             </ul>

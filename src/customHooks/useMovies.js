@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { ACCESS_TOKEN } from "../../moviesAppConfig";
 
-const useMovieDetails = () => {
-  const [detailsMovie, setDetailsMovie] = useState({});
+const useMovies = () => {
 
-  const fetchMovieDetails = (movieId) => {
+  const [movies, setMovies] = useState({});
+  
+  const [totalPages, setTotalPages] = useState()
+
+  const fetchMovies = (url) => {
     const options = {
         method: 'GET',
         headers: {
@@ -13,13 +16,17 @@ const useMovieDetails = () => {
         }
       };
       
-      fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options)
+      fetch(url, options)
         .then(response => response.json())
-        .then(response => setDetailsMovie(response))
+        .then(data => {
+          setMovies(data)
+          setTotalPages(data.total_pages)
+        } )
         .catch(err => console.error(err))
   };
 
-  return { detailsMovie, fetchMovieDetails };
+  return { movies, fetchMovies, totalPages };
+
 };
 
-export default useMovieDetails;
+export default useMovies;

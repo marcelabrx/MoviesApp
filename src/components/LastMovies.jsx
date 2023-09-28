@@ -1,46 +1,40 @@
 import * as React from 'react';
+import { useEffect, useState, useContext } from 'react';
+
+import { Link } from 'react-router-dom';
+import { FavoriteContext } from '../context/FavoriteContext';
+import useMovies from '../customHooks/useMovies';
+
+import Footer from './footer/Footer';
+import PaginationMovies from './PaginationMovies';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Button, Stack } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { CardActionArea, IconButton, Button, Stack } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import { ACCESS_TOKEN } from '../../moviesAppConfig';
-import { useEffect, useState, useContext } from 'react';
-import Footer from './footer/Footer';
-import { FavoriteContext } from '../context/FavoriteContext';
 
 export default function LastMovies() {
-  const [lastMovies, setLastMovies] = useState([]);
 
-const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
+  const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } = useContext(FavoriteContext)
 
-  const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing'
-useEffect(()=>{
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${ACCESS_TOKEN}`
-    }
-  };
-  
-  fetch(`${apiUrl}?language=en-US&page=`, options)
+  const { fetchMovies, movies, totalPages } = useMovies()
 
-    .then(response => response.json())
-    .then(data => setLastMovies(data.results))
-    .catch(err => console.error(err));
+  const [ page, setPage ]  = useState(1)
 
-}, [])
+  useEffect(() => {
+    fetchMovies(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`)
+  }, [page])
+
 
   return (
     <div style={{width:"100%", height:"100%", paddingTop:"2em"}}>
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Last Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
-      {lastMovies && lastMovies.map(movie => (
+      {movies.results && movies.results.map(movie => (
         <Card key={movie.id} 
               id={movie.id}
         sx={{marginX: "4px", marginBottom:"1em", backgroundColor: "#f4ebc3" }}>
@@ -63,7 +57,8 @@ useEffect(()=>{
                 </Link>
                 <Button variant="contained" size="small" sx={{backgroundColor:"#ab526b"}}>
                   {getFavoriteMovie(movie.id)? <StarIcon  className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> removeFavoritesMovies(movie)}/> : <StarBorderIcon className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movie)} />}
-                </Button>                
+                </Button>
+                
                 </Stack>
                 </CardContent>
             </CardContent>
@@ -71,6 +66,8 @@ useEffect(()=>{
         </Card>
        ))}
     </div>
+    
+    <PaginationMovies page={page} setPage={setPage} totalPages={totalPages}/>
     <Footer/>
   </div>
   );

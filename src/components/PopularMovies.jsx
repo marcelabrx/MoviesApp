@@ -1,49 +1,43 @@
 import * as React from 'react';
+
 import { useState, useEffect } from 'react';
-import { ACCESS_TOKEN } from '../../moviesAppConfig';
+import { useContext } from 'react';
+
+import useMovies from '../customHooks/useMovies';
+import { FavoriteContext } from '../context/FavoriteContext';
+import { Link } from 'react-router-dom';
+
+import Footer from './footer/Footer';
+import PaginationMovies from './PaginationMovies';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Stack, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import Footer from './footer/Footer';
-import { useContext } from 'react';
-import { FavoriteContext } from '../context/FavoriteContext';
 
 
 export default function PopularMovies() {
 
- const [popularMovies, setPopularMovies] = useState([]);
- const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
+ const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } = useContext(FavoriteContext)
 
- 
-const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
-  useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      }
-    };
-  
-    fetch(`${apiUrl}?language=es-Arg-US&page=1`, options)
+ const { fetchMovies, movies, totalPages } = useMovies()
 
-      .then(response => response.json())
-      .then(data => setPopularMovies(data.results))
-      .catch(err => console.error(err));
-  }, []);
+ const [ page, setPage ]  = useState(1)
+
+  useEffect (() => {
+    fetchMovies(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`)
+  }, [page])
 
 
   return (    
     <div style={{width:"100%", height:"auto", paddingTop:"2em"}}>
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Popular Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
-      {popularMovies && popularMovies.map(movie => (
+      {movies.results && movies.results.map(movie => (
         <Card key={movie.id} sx={{marginX: "4px", marginBottom:"1em", backgroundColor:"#f4ebc3" }}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
@@ -72,6 +66,7 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
         </Card>
       ))}
     </div>
+    <PaginationMovies page={page} setPage={setPage} totalPages={totalPages}/>
     <Footer/>
   </div>
   );
