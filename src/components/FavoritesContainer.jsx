@@ -3,7 +3,7 @@ import ErrorComponent from './errorComponent/ErrorComponent'
 import { useContext } from 'react';
 import {FavoriteContext} from '../context/FavoriteContext';
 import FavoritesCard from './FavoritesCard';
-
+import notSearchMovie from '../assets/notSearchMovie.svg'
 
 export default function FavoritesContainer(){
   const { favoritesMovies } = useContext(FavoriteContext)
@@ -19,7 +19,11 @@ export default function FavoritesContainer(){
           ))}
         </div>
       ) : (
-        <p style={{ textAlign: 'center', fontSize: '24px', color: '#ff0000' }}>No favorite movies found.</p>
+        <div>
+          <img src={notSearchMovie} alt="No favorite movies" /> 
+          <p style={{ textAlign: 'center', fontSize: '24px', color: '#bca297', fontFamily: 'Luckiest Guy', marginTop: '20px'}}>No favorite movies found</p>
+        </div>
+          
       )}
       </div>
       <Footer/>

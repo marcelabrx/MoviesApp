@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 import Footer from './footer/Footer';
 import PaginationMovies from './PaginationMovies';
+import bannerMovies from '../assets/bannerMovies.svg'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -41,9 +42,14 @@ export default function PopularMovies() {
         <Card key={movie.id} sx={{marginX: "4px", marginBottom:"1em", backgroundColor:"#f4ebc3" }}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
-              component="img"
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-              alt={movie.title}
+             component="img"
+             src={movie.backdrop_path ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : bannerMovies }
+             alt={movie.title}
+             sx={{
+               width: '100%',          
+               height: '150px',          
+               objectFit: 'cover',       
+             }}
             />
             <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
               <Typography gutterBottom variant="h6" component="div" sx={{ color: "#ab526b", textAlign:"center", height:"80px", marginTop:"1em"}}>

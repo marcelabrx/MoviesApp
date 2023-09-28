@@ -2,11 +2,13 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 .titlesFont{
   font-family: 'Luckiest Guy', cursive;
 }
+
 
 .bg-menu:hover{
   color: #bca297;
@@ -14,8 +16,8 @@ body {
 
 /* btn see more - carrousel */
 .see-more{
-  padding: 15px;
-  margin-bottom: 5px;
+  padding: 8px 15px;
+  margin: 8px 5px ;
   background-color: #ab526b;
   border: none;
   border-radius: 10%;
