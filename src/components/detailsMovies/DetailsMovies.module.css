@@ -7,16 +7,18 @@
     background-size: cover;
     /* background-color:#f4ebc3;   */
     height:100vh;  
-    padding:20px 0px
+    padding:20px 0px;
 }
 .card{
     position: relative;
     /* background-color: rgba(184, 151, 161, 0.5);  */
-    background-color:rgb(171, 82, 107, 0.6);
+    /* background-color:rgb(171, 82, 107, 0.6); */
+    background-color: #fff;
     height: fit-content;
-    padding: 0px 0px 20px;
+    padding: 10px 10px 20px;
     border-radius: 20px;
-    max-width: 350px;   
+    max-width: 400px;   
+    font-family: 'Poppins', sans-serif;
 }
 .imgCard{
     /* position: relative; */
@@ -29,12 +31,13 @@
 .informationDetails{
     text-align: center;
     /* color:#f4ebc3; */
-    color: #ffffff;
+    color: #000;
 }
 .detailsTitle{ 
     font-size: 0.7em;
     padding: 5px;
-    font-weight: 900
+    font-weight: 900;
+    margin-top: 20px;
 }
 .trailerView{
     display: flex;
@@ -43,7 +46,7 @@
     color:#7f7fe4;
     position: absolute;
     right: 20%;
-    top:56%; 
+    top:53%; 
     padding: 2px;
     border-radius: 20px;
     text-decoration: none
@@ -53,4 +56,8 @@
     font-size: 1.2em;
     margin: 5px;
     font-weight: 800;
+    margin: 15px 0;
+    background: #ab526b;
+    color: #fff;
+    padding: 5px 0;
 }

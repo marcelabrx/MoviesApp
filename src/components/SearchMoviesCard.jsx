@@ -15,6 +15,7 @@ import { ACCESS_TOKEN } from "../../moviesAppConfig";
 import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
 import Footer from "./footer/Footer";
+import bannerMovies from '../assets/bannerMovies.svg'
 
 export default function SearchMoviesCard({ searchMovie, searchResults }) {
   const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } =
@@ -68,7 +69,7 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
             <Card
               key={movie.id}
               sx={{
-                marginX: "2px",
+                marginX: "4px",
                 marginBottom: "1em",
                 backgroundColor: "#f4ebc3",
               }}
@@ -76,8 +77,13 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
               <CardActionArea sx={{ width: "260px" }}>
                 <CardMedia
                   component="img"
-                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  src={movie.backdrop_path ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : bannerMovies }
                   alt={movie.title}
+                  sx={{
+                    width: '100%',          
+                    height: '150px',          
+                    objectFit: 'cover',       
+                  }}
                 />
                 <CardContent
                   sx={{
@@ -91,10 +97,12 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
                     variant="h6"
                     component="div"
                     sx={{
-                      color: "#ab526b",
+                      color: "#000",
                       textAlign: "center",
                       height: "80px",
                       marginTop: "1em",
+                      fontFamily: 'Poppins', 
+                      fontSize: '18px'
                     }}
                   >
                     {movie.title}

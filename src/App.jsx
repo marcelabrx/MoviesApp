@@ -11,12 +11,9 @@ import FavoriteContextProvider from "./context/FavoriteContext";
 import SearchMoviesContainer from "./components/SearchMoviesContainer";
 import "./App.css";
 
-
-
 function App() {
  
   return( 
-    // <ThemeProvider theme={lightTheme}>
        <BrowserRouter>
        <FavoriteContextProvider>
         <Header />
@@ -31,8 +28,7 @@ function App() {
         </Routes>
         </FavoriteContextProvider>
       </BrowserRouter> 
-      // </ThemeProvider>   
-      )
+  )
 }
 
 export default App;
