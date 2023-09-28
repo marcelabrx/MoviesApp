@@ -3,16 +3,15 @@ import { useEffect, useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import { FavoriteContext } from '../context/FavoriteContext';
+import LoaderMovies from './loader/LoaderMovies';
 import useMovies from '../customHooks/useMovies';
-
 import Footer from './footer/Footer';
 import PaginationMovies from './PaginationMovies';
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, IconButton, Button, Stack } from '@mui/material';
+import { CardActionArea, Button, Stack } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
@@ -21,7 +20,7 @@ export default function LastMovies() {
 
   const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } = useContext(FavoriteContext)
 
-  const { fetchMovies, movies, totalPages } = useMovies()
+  const { fetchMovies, movies, totalPages, loading } = useMovies()
 
   const [ page, setPage ]  = useState(1)
 
@@ -32,6 +31,7 @@ export default function LastMovies() {
 
   return (
     <div style={{width:"100%", height:"100%", paddingTop:"2em"}}>
+       {loading && <LoaderMovies/>}
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Last Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {movies.results && movies.results.map(movie => (

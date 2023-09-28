@@ -3,25 +3,30 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import styles from './DetailsMovies.module.css'
 import useMovies from "../../customHooks/useMovies";
 import { useParams } from "react-router-dom";
 import { FavoriteContext } from '../../context/FavoriteContext';
+import LoaderMovies from "../loader/LoaderMovies"
 
 export default function DetailsMovies() {
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
   const { movieId } = useParams(); 
-  const { movies, fetchMovies } = useMovies();
+  const { movies, fetchMovies, loading } = useMovies();
+ 
 
   useEffect(() => {
-    fetchMovies(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);
+    fetchMovies(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);   
   }, [movieId]);
   
   
   return (
+    <>
+    {loading && <LoaderMovies/>}
     <div className={styles.detailsBody}
     style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500${movies.poster_path})`}}>
+      
     <section className={styles.card}>
     <Button size="small" sx={{backgroundColor:"transparent"}}>
                   {getFavoriteMovie(movies.id)? <StarIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> removeFavoritesMovies(movies)}/> : <StarBorderIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movies)} />}
@@ -59,5 +64,6 @@ export default function DetailsMovies() {
         </section>
         </section>
       </div>
+      </>
   );
 }

@@ -1,9 +1,6 @@
 import * as React from "react";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-
-
 import PrevContainerHome from "./PrevContainerHome";
 import LoaderMovies from "./loader/LoaderMovies";
 import Footer from './footer/Footer';
@@ -15,7 +12,7 @@ import useMovies from "../customHooks/useMovies"
 
 function HomeMovies() {
 
-  const { movies, fetchMovies } = useMovies();
+  const { movies, fetchMovies, loading } = useMovies();
 
   useEffect (() => {
     fetchMovies("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
@@ -23,8 +20,7 @@ function HomeMovies() {
 
   return (
     <div style={{width:"100%", height:"100%", paddingTop:"2em"}}>
-      {/* <LoaderMovies/> */}
-      
+     {loading && <LoaderMovies/>}
       <Carousel
         showThumbs={false}
         showStatus={false}

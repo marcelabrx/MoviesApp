@@ -15,12 +15,14 @@ import { ACCESS_TOKEN } from "../../moviesAppConfig";
 import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
 import Footer from "./footer/Footer";
+import LoaderMovies from "./loader/LoaderMovies";
 
 export default function SearchMoviesCard({ searchMovie, searchResults }) {
   const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } =
     useContext(FavoriteContext);
 
   const [rankingOfDay, setRankingOfDay] = useState([]);
+  const [loading, setLoading]= useState(true);
   useEffect(() => {
     const apiUrl = "https://api.themoviedb.org/3/trending/movie/day";
     const options = {
@@ -30,15 +32,20 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     };
-
+    setTimeout(()=>{
     fetch(`${apiUrl}?language=en-US&page=1`, options)
       .then((response) => response.json())
-      .then((data) => setRankingOfDay(data.results))
+      .then((data) => {
+        setRankingOfDay(data.results)
+        setLoading(false);
+      })
       .catch((err) => console.error(err));
+    }, 2000)
   }, []);
 
   return (
     <div style={{ width: "100%", height: "100%", paddingTop: "2em" }}>
+       {loading && <LoaderMovies/>}
       <div
         style={{
           display: "flex",

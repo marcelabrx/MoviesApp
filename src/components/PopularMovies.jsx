@@ -1,15 +1,12 @@
 import * as React from 'react';
-
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
-
 import useMovies from '../customHooks/useMovies';
 import { FavoriteContext } from '../context/FavoriteContext';
 import { Link } from 'react-router-dom';
-
+import LoaderMovies from './loader/LoaderMovies';
 import Footer from './footer/Footer';
 import PaginationMovies from './PaginationMovies';
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -24,7 +21,7 @@ export default function PopularMovies() {
 
  const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } = useContext(FavoriteContext)
 
- const { fetchMovies, movies, totalPages } = useMovies()
+ const { fetchMovies, movies, totalPages, loading } = useMovies()
 
  const [ page, setPage ]  = useState(1)
 
@@ -35,6 +32,7 @@ export default function PopularMovies() {
 
   return (    
     <div style={{width:"100%", height:"auto", paddingTop:"2em"}}>
+      {loading && <LoaderMovies/>}
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Popular Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {movies.results && movies.results.map(movie => (
