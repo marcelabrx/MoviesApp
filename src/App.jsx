@@ -11,12 +11,13 @@ import FavoritesContainer from "./components/FavoritesContainer"
 import DetailsMovies from "./components/detailsMovies/DetailsMovies"
 import FavoriteContextProvider from "./context/FavoriteContext";
 import "./App.css";
+import CarouselPopularMovies from "./components/CarouselPopularMovies";
+import CarouselTopRatedMovies from "./components/CarouselTopRatedMovies";
 
 
 function App() {
  
   return( 
-    // <ThemeProvider theme={lightTheme}>
        <BrowserRouter>
        <FavoriteContextProvider>
         <Header />
@@ -31,7 +32,6 @@ function App() {
         </Routes>
         </FavoriteContextProvider>
       </BrowserRouter> 
-      // </ThemeProvider>
   )
 }
 

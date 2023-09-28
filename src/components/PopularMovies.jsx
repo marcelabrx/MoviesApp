@@ -52,7 +52,7 @@ export default function PopularMovies() {
              }}
             />
             <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
-              <Typography gutterBottom variant="h6" component="div" sx={{ color: "#ab526b", textAlign:"center", height:"80px", marginTop:"1em"}}>
+              <Typography gutterBottom variant="h6" component="div" sx={{ color: "#000", textAlign:"center", height:"80px", marginTop:"1em", fontFamily: 'Poppins', fontSize: '18px' }}>
                 {movie.title}
               </Typography>
               <CardContent sx={{width:"100%" ,display:"flex", alignItems:"center", justifyContent:"center", borderTop:"#ab526b solid 2px", height:"20px"}}>
