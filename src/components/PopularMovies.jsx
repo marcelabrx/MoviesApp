@@ -40,7 +40,7 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
 
 
   return (    
-    <div style={{width:"100%", height:"auto", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
+    <div style={{width:"100%", height:"auto", paddingTop:"2em"}}>
     <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Popular Movies</h1>
     <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {popularMovies && popularMovies.map(movie => (
@@ -57,7 +57,7 @@ const apiUrl = 'https://api.themoviedb.org/3/movie/popular'
               </Typography>
               <CardContent sx={{width:"100%" ,display:"flex", alignItems:"center", justifyContent:"center", borderTop:"#ab526b solid 2px", height:"20px"}}>
                 <Stack spacing={2} direction="row" sx={{marginTop:"15px"}}>
-                <Link >
+                <Link to={`/detailsMovies/${movie.id}`}>
                 <Button variant="contained" size="small" sx={{backgroundColor:"#ab526b"}}>
                 <RemoveRedEyeOutlinedIcon className='bg-menu' sx={{color: "#c7ede8", fontSize:"2rem"}} />
                 </Button>

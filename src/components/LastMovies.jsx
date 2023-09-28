@@ -3,8 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, IconButton, Button, Stack } from '@mui/material';
-
+import { CardActionArea, Button, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -17,7 +16,7 @@ import { FavoriteContext } from '../context/FavoriteContext';
 export default function LastMovies() {
   const [lastMovies, setLastMovies] = useState([]);
 
-  const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
+const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
 
   const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing'
 useEffect(()=>{
@@ -64,9 +63,7 @@ useEffect(()=>{
                 </Link>
                 <Button variant="contained" size="small" sx={{backgroundColor:"#ab526b"}}>
                   {getFavoriteMovie(movie.id)? <StarIcon  className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> removeFavoritesMovies(movie)}/> : <StarBorderIcon className='bg-menu' sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movie)} />}
-                  
-                </Button>
-                
+                </Button>                
                 </Stack>
                 </CardContent>
             </CardContent>

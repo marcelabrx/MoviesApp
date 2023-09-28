@@ -1,5 +1,4 @@
 import Footer from './footer/Footer';
-import ErrorComponent from './errorComponent/ErrorComponent'
 import { useContext } from 'react';
 import {FavoriteContext} from '../context/FavoriteContext';
 import FavoritesCard from './FavoritesCard';
@@ -9,7 +8,7 @@ export default function FavoritesContainer(){
   const { favoritesMovies } = useContext(FavoriteContext)
     return (
 
-      <div style={{width:"100%", height:"100%", backgroundColor:"#f4ebc3", paddingTop:"2em"}}>
+      <div style={{width:"100%", height:"100%", paddingTop:"2em"}}>
       <h1 style={{margin:"0px", padding:"20px", marginBottom:"1em",  fontSize: '50px', textAlign: "center", color: "#bca297", fontFamily: "Luckiest Guy", borderBottom: "solid", borderTop: "solid"}}>Favorites Movies</h1>
       <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
       {favoritesMovies.length > 0 ? (

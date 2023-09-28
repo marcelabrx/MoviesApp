@@ -14,7 +14,7 @@ export default function FavoritesCard ({movie}){
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
     return (
         <Card 
-        sx={{marginX: "2px", marginBottom:"1em"}}>
+        sx={{marginX: "2px", marginBottom:"1em",  backgroundColor:"#f4ebc3"}}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
@@ -27,7 +27,7 @@ export default function FavoritesCard ({movie}){
               </Typography>
               <CardContent sx={{width:"100%" ,display:"flex", alignItems:"center", justifyContent:"center", borderTop:"#ab526b solid 2px", height:"20px"}}>
                 <Stack spacing={2} direction="row" sx={{marginTop:"15px"}}>
-                <Link >
+                <Link to={`/detailsMovies/${movie.id}`} >
                 <Button variant="contained" size="small" sx={{backgroundColor:"#ab526b"}}>
                 <RemoveRedEyeOutlinedIcon className='bg-menu' sx={{color: "#c7ede8", fontSize:"2rem"}} />
                 </Button>

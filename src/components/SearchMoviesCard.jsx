@@ -57,7 +57,7 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
             fontFamily: "Luckiest Guy",
           }}
         >
-          {searchMovie.length > 0 ? `${searchMovie}` : "Ranking of the day"}
+          {searchMovie.length > 0 ? `${searchMovie}` : "Today's ranking"}
         </h1>
       </div>
       <div
@@ -114,7 +114,7 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
                       direction="row"
                       sx={{ marginTop: "15px" }}
                     >
-                      <Link>
+                      <Link to={`/detailsMovies/${movie.id}`}>
                         <Button
                           variant="contained"
                           size="small"
