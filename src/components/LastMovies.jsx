@@ -7,6 +7,7 @@ import useMovies from '../customHooks/useMovies';
 
 import Footer from './footer/Footer';
 import PaginationMovies from './PaginationMovies';
+import bannerMovies from '../assets/bannerMovies'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -41,7 +42,7 @@ export default function LastMovies() {
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              src={movie.backdrop_path ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : bannerMovies }
               alt={movie.title}
             />
             <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
