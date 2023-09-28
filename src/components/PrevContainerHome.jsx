@@ -5,7 +5,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import IconButton from "@mui/material/IconButton";
-import Link from "@mui/material/Link";
+import { Link } from 'react-router-dom';
 import Container from "@mui/material/Container";
 import {
   Table,
@@ -19,48 +19,21 @@ import {
 } from "@mui/material";
 
 
-import { useEffect, useState } from "react";
-import { ACCESS_TOKEN } from "../../moviesAppConfig";
+import { useEffect } from "react";
+
+import useMovies from "../customHooks/useMovies";
 
 
 export default function PrevContainerHome() {
-    const [popularMovies, setPopularMovies] = useState([]);
 
-    const [topRated, setTopRated] = useState([]);
+    const { movies, fetchMovies } = useMovies();
 
-    const apiUrl = "https://api.themoviedb.org/3/movie/popular";
-
-    useEffect(() => {
-        const options = {
-            method: "GET",
-            headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${ACCESS_TOKEN}`,
-            },
-        };
-
-        fetch(`${apiUrl}?language=es-Arg-US&page=1`, options)
-            .then((response) => response.json())
-            .then((data) => setPopularMovies(data.results))
-            .catch((err) => console.error(err));
+    useEffect (() => {
+      fetchMovies("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
     }, []);
     
-    useEffect(() => {
-        const options = {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${ACCESS_TOKEN}`,
-          },
-        };
-    
-        fetch(
-          "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-          options
-        )
-          .then((response) => response.json())
-          .then((data) => setTopRated(data.results))
-          .catch((err) => console.error(err));
+    useEffect (() => {
+      fetchMovies("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
     }, []);
 
   return (
@@ -101,10 +74,11 @@ export default function PrevContainerHome() {
                 justifyContent: "space-between",
               }}
             >
-              {popularMovies &&
-                popularMovies.map((movie) => (
+              {movies.results &&
+                movies.results.map((movie) => (
                   <TableRow sx={{overflowY: 'scroll'}} key={movie.id}>
                     <TableCell>
+                      <Link to={`/detailsMovies/${movie.id}`}>
                       <ListItem sx={{ justifyContent: "space-between", height: '25px' }}>
                         <ListItemAvatar>
                           <Avatar
@@ -112,7 +86,6 @@ export default function PrevContainerHome() {
                             src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
                           />
                         </ListItemAvatar>
-                        <Link href="#" underline="none">
                           <Typography
                             sx={{
                               fontSize: "15px",
@@ -123,7 +96,6 @@ export default function PrevContainerHome() {
                           >
                             {movie.title}
                           </Typography>
-                        </Link>
                         <IconButton>
                           <PlayCircleFilledIcon
                             sx={{
@@ -136,6 +108,7 @@ export default function PrevContainerHome() {
                           />
                         </IconButton>
                       </ListItem>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -172,10 +145,11 @@ export default function PrevContainerHome() {
                 justifyContent: "space-between",
               }}
             >
-              {topRated &&
-                topRated.map((movie) => (
+              {movies.results &&
+                movies.results.map((movie) => (
                   <TableRow key={movie.id}>
                     <TableCell>
+                    <Link to={`/detailsMovies/${movie.id}`}>
                       <ListItem sx={{ justifyContent: "space-between", height: '25px' }}>
                         <ListItemAvatar>
                           <Avatar
@@ -183,7 +157,6 @@ export default function PrevContainerHome() {
                             src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
                           />
                         </ListItemAvatar>
-                        <Link href="#" underline="none">
                           <Typography
                             sx={{
                               fontSize: "15px",
@@ -194,7 +167,6 @@ export default function PrevContainerHome() {
                           >
                             {movie.title}
                           </Typography>
-                        </Link>
                         <IconButton>
                           <PlayCircleFilledIcon
                             sx={{
@@ -207,6 +179,7 @@ export default function PrevContainerHome() {
                           />
                         </IconButton>
                       </ListItem>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}

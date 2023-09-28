@@ -1,39 +1,24 @@
+import * as React from "react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import * as React from "react";
+
 
 import PrevContainerHome from "./PrevContainerHome";
 import LoaderMovies from "./loader/LoaderMovies";
 import Footer from './footer/Footer';
 import { Link } from "react-router-dom";
 
-import { useEffect, useState } from "react";
-import { ACCESS_TOKEN } from "../../moviesAppConfig";
-import useMovies from "./useMovies"
+import { useEffect } from "react";
+
+import useMovies from "../customHooks/useMovies"
 
 function HomeMovies() {
 
-  const [newMovies, setNewMovies] = useState([]);
-  const { detailsMovie, fetchMovieDetails } = useMovies();
+  const { movies, fetchMovies } = useMovies();
 
-  useEffect(() => {
-    fetchMovieDetails("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
-    // const options = {
-    //   method: "GET",
-    //   headers: {
-    //     accept: "application/json",
-    //     Authorization: `Bearer ${ACCESS_TOKEN}`,
-    //   },
-    // };
-
-    // fetch(
-    //   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
-    //   options
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => setNewMovies(data.results))
-    //   .catch((err) => console.error(err));
+  useEffect (() => {
+    fetchMovies("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
   }, []);
 
   return (
@@ -48,8 +33,8 @@ function HomeMovies() {
         dynamicHeight={false}
         centerMode={true}
       >
-        {detailsMovie.results &&
-          detailsMovie.results.map((movie) => (
+        {movies.results &&
+          movies.results.map((movie) => (
             <div key={movie.id}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}

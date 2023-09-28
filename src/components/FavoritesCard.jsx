@@ -15,7 +15,7 @@ export default function FavoritesCard ({movie}){
     return (
         <Card 
         // key={movie.id} 
-        sx={{marginX: "2px", marginBottom:"1em"}}>
+        sx={{marginX: "4px", marginBottom:"1em", backgroundColor:"#f4ebc3" }}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"
