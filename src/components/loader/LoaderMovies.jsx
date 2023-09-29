@@ -14,9 +14,9 @@ export default function LoaderMovies() {
             <div className={ styles.triangle }></div>
             <div className={ styles.light }></div>
         </div>
-        <div className={styles.loadingTextContainer}>
+        {/* <div className={styles.loadingTextContainer}>
           <p className={`${styles.jumpText} ${styles.titlesFont}`}>L O A D I N G . . .</p>
-        </div>
+        </div> */}
       </div>
       
     </>

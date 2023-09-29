@@ -54,8 +54,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchMoviesContainer() {
   const [searchMovie, setSearchMovie] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [ page, setPage ]  = useState(1)
-  const { totalPages } = useMovies()
   
   useEffect(() => {
     if (searchMovie) {
@@ -68,7 +66,7 @@ export default function SearchMoviesContainer() {
           Authorization: `Bearer ${ACCESS_TOKEN}`,
         },
       };
-      const searchUrl = `${apiUrl}?include_adult=false&language=en-US&page=${page}&query=${searchMovie}`;
+      const searchUrl = `${apiUrl}?include_adult=false&language=en-US&page=1&query=${searchMovie}`;
       
       fetch(searchUrl, options)
         .then((response) => response.json())
@@ -96,7 +94,6 @@ export default function SearchMoviesContainer() {
         searchMovie={searchMovie}
         searchResults={searchResults}
       />
-      <PaginationMovies page={page} setPage={setPage} totalPages={totalPages} />
       <Footer />
     </div>
   );

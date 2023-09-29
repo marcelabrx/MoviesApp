@@ -5,9 +5,8 @@
     background-repeat: no-repeat;
     background-position:center;  
     background-size: cover;
-    /* background-color:#f4ebc3;   */
     height:100vh;  
-    padding:20px 0px;
+    padding:20px;
 }
 .card{
     position: relative;
@@ -25,19 +24,19 @@
     background-size:contain;
     background-repeat: no-repeat;
     background-position:center;  
-    height:350px;
+    height:300px;
 }
 
 .informationDetails{
     text-align: center;
     /* color:#f4ebc3; */
     color: #000;
+    font-size: 12px;
 }
 .detailsTitle{ 
-    font-size: 0.7em;
-    padding: 5px;
+    font-size: 10px;
     font-weight: 900;
-    /* margin-top: 20px; */
+    margin: 0;
 }
 .trailerView{
     display: flex;
@@ -56,7 +55,7 @@
     font-size: 1.2em;
     margin: 5px;
     font-weight: 800;
-    /* margin: 15px 0; */
+    margin: 10px 0;
     background: #ab526b;
     color: #fff;
     padding: 5px 0;

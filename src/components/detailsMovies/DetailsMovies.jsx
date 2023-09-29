@@ -29,16 +29,16 @@ export default function DetailsMovies() {
       <>
         {loading ? <LoaderMovies/> : (
             <div className={styles.detailsBody}
-            style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500${movies.poster_path})`}}>
+            style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${movies.poster_path})`}}>
               
             <section className={styles.card}>
             <Button size="small" sx={{backgroundColor:"transparent"}}>
-                          {getFavoriteMovie(movies.id)? <StarIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={() => removeFavoritesMovies(movies)}/> : <StarBorderIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movies)} />}
-                        </Button>   
+              {getFavoriteMovie(movies.id)? <StarIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={() => removeFavoritesMovies(movies)}/> : <StarBorderIcon sx={{ color:"#e6d839", fontSize:"2rem" }} onClick={()=> addFavoritesMovies(movies)} />}
+            </Button>   
             <div className={styles.imgCard}
             style={{
               backgroundImage: movies.poster_path
-                ? `url(https://image.tmdb.org/t/p/w500${movies.poster_path})`
+                ? `url(https://image.tmdb.org/t/p/original${movies.poster_path})`
                 : `url(${bannerMovies})`       
             }}>
               </div>
@@ -46,7 +46,7 @@ export default function DetailsMovies() {
               <section className={styles.informationDetails}>
                   <div className={styles.detailsTitle}>
                     <h1>
-                      {movies.title} -
+                      {movies.title} - 
                       <span>{new Date(movies.release_date).getFullYear()}
                       </span>
                     </h1>
