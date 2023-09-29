@@ -1,0 +1,53 @@
+.searchMovieDiv{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0px;
+    margin-bottom: 0.5em;
+    border-bottom: solid #bca297;
+    border-top: solid #bca297
+}
+.searchTitle{
+    font-size: 3em;
+    color: #bca297;
+    font-family: Luckiest Guy
+}
+.searchContainCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+.searchCard{
+    margin: 0px 4px;
+    margin-bottom: 1em;
+    max-width: 260px
+}
+.cardMedia{
+    height:150px;
+    object-fit: cover
+}
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.searchTypography{
+    color: #000;
+    text-align: center;
+    height: 80px;
+    margin-top: 1em;
+    font-family: Poppins;
+    font-size: 18px
+}
+.searchCardContent{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: #ab526b solid 2px;
+    height: 20px
+}
+.searchStarIcon{
+    color: #e6d839;
+     font-size: 2em
+}

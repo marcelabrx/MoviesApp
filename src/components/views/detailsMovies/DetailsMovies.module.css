@@ -1,0 +1,82 @@
+.detailsBody {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  padding: 20px;
+}
+.card {
+  position: relative;
+  background-color: #fff;
+  height: fit-content;
+  padding: 10px 10px 20px;
+  border-radius: 20px;
+  max-width: 400px;
+  font-family: "Poppins", sans-serif;
+}
+.imgCard {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+}
+
+.informationDetails {
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+}
+.detailsTitle {
+  font-size: 10px;
+  font-weight: 900;
+  margin: 0;
+}
+.detailsSubTitle {
+  font-size: 1.2em;
+  margin: 5px;
+  font-weight: 800;
+  margin: 10px 0;
+  background: #ab526b;
+  color: #fff;
+  padding: 5px 0;
+}
+.detailsUl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.circleIconTrailer {
+  background-color: #f4ebc3;
+  border-radius: 50%;
+  cursor: pointer;
+  color: red;
+}
+.showTrailerDiv {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.cancelIconTrailer {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  z-index: 1;
+  color: red;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+.iframeTrailer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

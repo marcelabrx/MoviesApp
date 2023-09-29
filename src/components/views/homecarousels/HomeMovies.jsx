@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import CarouselBannerMovies from "./CarouselBannerMovies";
-import Footer from './footer/Footer';
+import Footer from '../../footer/Footer';
 
 
 function HomeMovies() {

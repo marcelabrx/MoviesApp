@@ -1,12 +1,10 @@
-import SearchMoviesCard from "./SearchMoviesCard";
+import { useEffect, useState } from "react";
+import { ACCESS_TOKEN } from "../../../../moviesAppConfig";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
-import { useEffect, useState } from "react";
-import { ACCESS_TOKEN } from "../../moviesAppConfig";
-import PaginationMovies from "./PaginationMovies";
-import Footer from "./footer/Footer";
-import useMovies from "../customHooks/useMovies";
+import SearchMoviesCard from "./SearchMoviesCard";
+import Footer from "../../footer/Footer";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -54,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchMoviesContainer() {
   const [searchMovie, setSearchMovie] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  
+
   useEffect(() => {
     if (searchMovie) {
       const apiUrl = "https://api.themoviedb.org/3/search/movie";
@@ -67,13 +65,11 @@ export default function SearchMoviesContainer() {
         },
       };
       const searchUrl = `${apiUrl}?include_adult=false&language=en-US&page=1&query=${searchMovie}`;
-      
+
       fetch(searchUrl, options)
         .then((response) => response.json())
-        .then((data) => 
-          setSearchResults(data.results))
+        .then((data) => setSearchResults(data.results))
         .catch((err) => console.error(err));
-
     }
   }, [searchMovie]);
 
@@ -90,10 +86,7 @@ export default function SearchMoviesContainer() {
           onChange={(e) => setSearchMovie(e.target.value)}
         />
       </Search>
-      <SearchMoviesCard
-        searchMovie={searchMovie}
-        searchResults={searchResults}
-      />
+      <SearchMoviesCard searchMovie={searchMovie} searchResults={searchResults} />
       <Footer />
     </div>
   );

@@ -1,22 +1,22 @@
-.titlesFont{
-    font-family: 'Luckiest Guy', cursive;
+.titlesFont {
+  font-family: "Luckiest Guy", cursive;
 }
 
 /* SPINNER */
-.contentCamera{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.contentCamera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
-  
+
 .filmCamera {
   display: block;
   width: 140px;
   height: 100px;
   position: relative;
 }
-  
+
 .filmCameraBody {
   width: 150px;
   height: 100px;
@@ -29,7 +29,7 @@
   left: 15px;
   position: absolute;
 }
-  
+
 .filmCameraLens {
   width: 70px;
   height: 70px;
@@ -41,19 +41,19 @@
   bottom: 25px;
   left: 10px;
 }
-  
+
 .filmCameraLens2 {
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    border-radius: 50%;
-    z-index: 1;
-    position: relative;
-    bottom: 25px;
-    left: 10px;
-    border: white dotted;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 1;
+  position: relative;
+  bottom: 25px;
+  left: 10px;
+  border: white dotted;
 }
-  
+
 .filmCameraHandle {
   width: 20px;
   height: 80px;
@@ -63,117 +63,114 @@
   left: 150px;
 }
 .triangle {
-    width: 50px;
-    height: 50px;
-    left: 136px;
-    top: 2px;
-    position: inherit;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 60px solid #000;
-    transform: rotate(-90deg);
-}  
-  
-.filmCameraLens:before {
-    content: "";
-    border-radius: 100%;
-    width: 100px;
-    height: 100px;
-    display: block;
-    z-index: 1;
-    position: relative; 
-    top: -15px;
-    left: -15px;
-    border: 10px dashed #fff;
-    bottom: -10px;
-    transform: rotate(0deg);
-    box-sizing: border-box;
-    animation: film 4s linear infinite;
+  width: 50px;
+  height: 50px;
+  left: 136px;
+  top: 2px;
+  position: inherit;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid #000;
+  transform: rotate(-90deg);
 }
-.filmCameraLens2::before{
-    content: "";
-    border-radius: 100%;
-    width: 50px;
-    height: 50px;
-    display: block;
-    z-index: 1;
-    position: relative; 
-    left: 1px;
-    border: 8px dashed #fff;
-    transform: rotate(0deg);
-    box-sizing: border-box;
-    animation: film2 2s linear infinite;
+
+.filmCameraLens:before {
+  content: "";
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  display: block;
+  z-index: 1;
+  position: relative;
+  top: -15px;
+  left: -15px;
+  border: 10px dashed #fff;
+  bottom: -10px;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+  animation: film 4s linear infinite;
+}
+.filmCameraLens2::before {
+  content: "";
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: block;
+  z-index: 1;
+  position: relative;
+  left: 1px;
+  border: 8px dashed #fff;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+  animation: film2 2s linear infinite;
 }
 @keyframes film {
-    0% {
-        transform: rotate(0deg) scale(0.4);
-    }
-    100% {
-        transform: rotate(-360deg) scale(0.4);
-    }
+  0% {
+    transform: rotate(0deg) scale(0.4);
+  }
+  100% {
+    transform: rotate(-360deg) scale(0.4);
+  }
 }
 @keyframes film2 {
-    0% {
-        transform: rotate(0deg) scale(0.4);
-    }
-    100% {
-        transform: rotate(-360deg) scale(0.4);
-    }
+  0% {
+    transform: rotate(0deg) scale(0.4);
+  }
+  100% {
+    transform: rotate(-360deg) scale(0.4);
+  }
 }
-  
+
 .light {
-    position: absolute;
-    z-index: 0;
-    top: 6px;
-    left: 250px;
-    bottom: 10px;
-    width: 50px;
-    height: 100px;
-    background:linear-gradient(to left, rgba(255, 255, 255, 0), #ffb940);    
-    animation: shine 1s infinite;
-    transform-origin: top left;
+  position: absolute;
+  z-index: 0;
+  top: 6px;
+  left: 250px;
+  bottom: 10px;
+  width: 50px;
+  height: 100px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #ffb940);
+  animation: shine 1s infinite;
+  transform-origin: top left;
 }
-  
+
 @keyframes shine {
-    0%, 100% {
-        transform: scaleX(0);
-    }
-    50% {
-        transform: scaleX(1);
-    }
+  0%,
+  100% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
 }
 
 .loadingTextContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 250px; 
-    color: #ab526b;
-    font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 250px;
+  color: #ab526b;
+  font-size: 25px;
 }
 
 .jumpText {
-    animation: jump 1s infinite; 
-    animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1); 
-    margin-right: 50px;
+  animation: jump 1s infinite;
+  animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+  margin-right: 50px;
 }
 
 @keyframes jump {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0); 
-    }
-    40% {
-      transform: translateY(-10px); 
-    }
-    60% {
-      transform: translateY(-5px); 
-    }
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
-  
-
-  
-  
-  
-  
-  
-  

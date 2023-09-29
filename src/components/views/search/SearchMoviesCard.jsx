@@ -1,3 +1,8 @@
+import { Link } from "react-router-dom";
+import { ACCESS_TOKEN } from "../../../../moviesAppConfig";
+import { useContext, useEffect, useState } from "react";
+import { FavoriteContext } from "../../../context/FavoriteContext";
+import styles from "./SearchMoviesDetails.module.css";
 import {
   Card,
   CardActionArea,
@@ -5,26 +10,20 @@ import {
   CardContent,
   Typography,
   Button,
-  Stack
+  Stack,
 } from "@mui/material";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import { Link } from "react-router-dom";
-import { ACCESS_TOKEN } from "../../moviesAppConfig";
-import { useContext, useEffect, useState } from "react";
-import { FavoriteContext } from "../context/FavoriteContext";
-
-import LoaderMovies from "./loader/LoaderMovies";
-import bannerMovies from '../assets/bannerMovies.svg'
-
+import LoaderMovies from "../../loader/LoaderMovies";
+import bannerMovies from "../../../assets/bannerMovies.svg";
 
 export default function SearchMoviesCard({ searchMovie, searchResults }) {
   const { getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies } =
     useContext(FavoriteContext);
 
   const [rankingOfDay, setRankingOfDay] = useState([]);
-  const [loading, setLoading]= useState(true);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const apiUrl = "https://api.themoviedb.org/3/trending/movie/day";
     const options = {
@@ -34,15 +33,15 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     };
-    setTimeout(()=>{
-    fetch(`${apiUrl}?language=en-US&page=1`, options)
-      .then((response) => response.json())
-      .then((data) => {
-        setRankingOfDay(data.results)
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
-    }, 2000)
+    setTimeout(() => {
+      fetch(`${apiUrl}?language=en-US&page=1`, options)
+        .then((response) => response.json())
+        .then((data) => {
+          setRankingOfDay(data.results);
+          setLoading(false);
+        })
+        .catch((err) => console.error(err));
+    }, 2000);
   }, []);
 
   return (
@@ -51,43 +50,19 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
         <LoaderMovies />
       ) : (
         <div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-              margin: "0px",
-              marginBottom: "0.5em",
-              borderBottom: "solid #bca297",
-              borderTop: "solid #bca297",
-            }}
-          >
-            <h1
-              style={{
-                fontSize: "3em",
-                color: "#bca297",
-                fontFamily: "Luckiest Guy",
-              }}
-            >
+          <div className={styles.searchMovieDiv}>
+            <h1 className={styles.searchTitle}>
               {searchMovie.length > 0 ? `${searchMovie}` : "Today's ranking"}
             </h1>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
+          <div className={styles.searchContainCard}>
             {(searchMovie.length > 0 ? searchResults : rankingOfDay).map(
               (movie) => (
                 <Card
                   key={movie.id}
+                  className={styles.searchCard}
                   sx={{
-                    marginX: "4px",
-                    marginBottom: "1em",
                     backgroundColor: "#f4ebc3",
-                    maxWidth: "260px",
                   }}
                 >
                   <CardActionArea>
@@ -98,45 +73,20 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
                           ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
                           : bannerMovies
                       }
+                      sx={{ width: "260px" }}
                       alt={movie.title}
-                      sx={{
-                        width: "100%",
-                        height: "150px",
-                        objectFit: "cover",
-                      }}
+                      className={styles.cardMedia}
                     />
-                    <CardContent
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
+                    <CardContent className={styles.cardContent}>
                       <Typography
                         gutterBottom
                         variant="h6"
                         component="div"
-                        sx={{
-                          color: "#000",
-                          textAlign: "center",
-                          height: "80px",
-                          marginTop: "1em",
-                          fontFamily: "Poppins",
-                          fontSize: "18px",
-                        }}
+                        className={styles.searchTypography}
                       >
                         {movie.title}
                       </Typography>
-                      <CardContent
-                        sx={{
-                          width: "100%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          borderTop: "#ab526b solid 2px",
-                          height: "20px",
-                        }}
-                      >
+                      <CardContent className={styles.searchCardContet}>
                         <Stack
                           spacing={2}
                           direction="row"
@@ -161,16 +111,12 @@ export default function SearchMoviesCard({ searchMovie, searchResults }) {
                           >
                             {getFavoriteMovie(movie.id) ? (
                               <StarIcon
-                                className="bg-menu"
-                                sx={{ color: "#e6d839", fontSize: "2em" }}
-                                onClick={() =>
-                                  removeFavoritesMovies(movie)
-                                }
+                                className={styles.searchStarIcon}
+                                onClick={() => removeFavoritesMovies(movie)}
                               />
                             ) : (
                               <StarBorderIcon
-                                className="bg-menu"
-                                sx={{ color: "#e6d839", fontSize: "2em" }}
+                                className={styles.searchStarIcon}
                                 onClick={() => addFavoritesMovies(movie)}
                               />
                             )}

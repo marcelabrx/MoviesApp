@@ -8,14 +8,14 @@ import StarBorderIcon from '@mui/icons-material/Star';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { FavoriteContext } from '../context/FavoriteContext';
-import bannerMovies from '../assets/bannerMovies.svg'
+import { FavoriteContext } from '../../../context/FavoriteContext';
+import bannerMovies from '../../../assets/bannerMovies.svg'
 
 export default function FavoritesCard ({movie}){
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
     return (
         <Card 
-        sx={{marginX: "2px", marginBottom:"1em",  backgroundColor:"#f4ebc3"}}>
+        sx={{marginX: "4px", marginBottom:"1em",  backgroundColor:"#f4ebc3"}}>
           <CardActionArea sx={{width:"260px"}}>
             <CardMedia
               component="img"

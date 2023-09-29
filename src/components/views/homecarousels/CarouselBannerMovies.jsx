@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 import { useEffect } from "react";
 
-import useMovies from "../customHooks/useMovies"
-import LoaderMovies from "./loader/LoaderMovies";
+import useMovies from "../../../customHooks/useMovies"
+import LoaderMovies from "../../loader/LoaderMovies";
 import CarouselPopularMovies from "./CarouselPopularMovies";
 import CarouselTopRatedMovies from "./CarouselTopRatedMovies";
 export default function CarouselBannerMovies() {

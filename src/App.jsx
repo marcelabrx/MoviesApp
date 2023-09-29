@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Header from "./components/Header";
-import HomeMovies from "./components/HomeMovies"
-import LastMovies from "./components/LastMovies";
-import PopularMovies from "./components/PopularMovies";
+import HomeMovies from "./components/views/homecarousels/HomeMovies"
+import LastMovies from "./components/views/LastMovies";
+import PopularMovies from "./components/views/PopularMovies";
 import ErrorComponent from "./components/errorComponent/ErrorComponent"
-import FavoritesContainer from "./components/FavoritesContainer"
-import DetailsMovies from "./components/detailsMovies/DetailsMovies"
+import FavoritesContainer from "./components/views/favorites/FavoritesContainer"
+import DetailsMovies from "./components/views/detailsMovies/DetailsMovies"
 import FavoriteContextProvider from "./context/FavoriteContext";
-import SearchMoviesContainer from "./components/SearchMoviesContainer";
+import SearchMoviesContainer from "./components/views/search/SearchMoviesContainer";
 import "./App.css";
 
 function App() {

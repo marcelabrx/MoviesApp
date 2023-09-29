@@ -1,9 +1,9 @@
-import Footer from './footer/Footer';
+import Footer from '../../footer/Footer';
 import { useContext, useState, useEffect } from 'react';
-import {FavoriteContext} from '../context/FavoriteContext';
+import {FavoriteContext} from '../../../context/FavoriteContext';
 import FavoritesCard from './FavoritesCard';
-import notSearchMovie from '../assets/notSearchMovie.svg'
-import LoaderMovies from "../components/loader/LoaderMovies"
+import notSearchMovie from '../../../assets/notSearchMovie.svg'
+import LoaderMovies from "../../loader/LoaderMovies"
 
 
 export default function FavoritesContainer(){
