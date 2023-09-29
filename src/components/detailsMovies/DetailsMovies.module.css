@@ -37,7 +37,7 @@
     font-size: 0.7em;
     padding: 5px;
     font-weight: 900;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 .trailerView{
     display: flex;
@@ -56,7 +56,7 @@
     font-size: 1.2em;
     margin: 5px;
     font-weight: 800;
-    margin: 15px 0;
+    /* margin: 15px 0; */
     background: #ab526b;
     color: #fff;
     padding: 5px 0;

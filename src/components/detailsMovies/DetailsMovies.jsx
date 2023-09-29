@@ -5,23 +5,26 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { useEffect, useContext, useState } from "react";
 import styles from './DetailsMovies.module.css'
+import { ACCESS_TOKEN } from "../../../moviesAppConfig";
 import useMovies from "../../customHooks/useMovies";
 import { useParams } from "react-router-dom";
 import { FavoriteContext } from '../../context/FavoriteContext';
 import bannerMovies from '../../assets/bannerMovies.svg'
 import LoaderMovies from "../loader/LoaderMovies"
+import VideoMovies from "../VideoMovies";
 
 export default function DetailsMovies() {
   const {getFavoriteMovie, addFavoritesMovies, removeFavoritesMovies}= useContext(FavoriteContext)
   const { movieId } = useParams(); 
   const { movies, fetchMovies, loading } = useMovies();
- 
+
 
   useEffect(() => {
-    fetchMovies(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);   
+    fetchMovies(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);  
+    // fetchTrailers() 
   }, [movieId]);
   
-  
+
   return (
       <>
         {loading ? <LoaderMovies/> : (
@@ -39,13 +42,7 @@ export default function DetailsMovies() {
                 : `url(${bannerMovies})`       
             }}>
               </div>
-              <Link className={styles.trailerView}
-                      to={`https://www.youtube.com/watch?v=${movies.video}`}
-                    >
-                      <PlayCircleIcon sx={{fontSize:"3em", backgroundColor:"#f4ebc3", 
-                      borderRadius:"50%"
-                      }} />
-                    </Link>
+            <VideoMovies/>
               <section className={styles.informationDetails}>
                   <div className={styles.detailsTitle}>
                     <h1>
