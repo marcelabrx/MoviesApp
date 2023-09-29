@@ -13,7 +13,7 @@ function HomeMovies() {
       <CarouselPopularMovies/>
       <CarouselTopRatedMovies/>
       <Footer/>
-      </>
+    </>
   );
 }
 

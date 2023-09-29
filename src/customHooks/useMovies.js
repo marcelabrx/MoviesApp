@@ -7,6 +7,9 @@ const useMovies = () => {
   
   const [totalPages, setTotalPages] = useState()
 
+  const [loading, setLoading] = useState(true)
+
+
   const fetchMovies = (url) => {
     const options = {
         method: 'GET',
@@ -21,11 +24,15 @@ const useMovies = () => {
         .then(data => {
           setMovies(data)
           setTotalPages(data.total_pages)
+          setTimeout(() => {
+            setLoading(false);
+          }, 1500)
+          
         } )
         .catch(err => console.error(err))
   };
 
-  return { movies, fetchMovies, totalPages };
+  return { movies, fetchMovies, totalPages, loading };
 
 };
 
